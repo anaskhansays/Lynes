@@ -43,12 +43,13 @@
             />
         <EditText
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_height="@dimen/_48sdp"
             android:id="@+id/inputSearch"
             android:layout_marginStart="@dimen/_12sdp"
             android:background="@null"
             android:fontFamily="@font/poppins_regular"
             android:hint="Search"
+            android:paddingStart="@dimen/_8sdp"
             android:imeOptions="actionDone"
             android:importantForAutofill="no"
             android:includeFontPadding="false"
