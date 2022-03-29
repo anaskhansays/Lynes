@@ -213,7 +213,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
 
             }
         }
-        //this load all the notes
+        //this load all the notes and displays them on main screen
         new GetNotesTask().execute();
     }
 
