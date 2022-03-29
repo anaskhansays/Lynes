@@ -171,7 +171,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
     private void getNotes(final int requestCode, final boolean isNoteDeleted){
 
         @SuppressLint("StaticFieldLeak")
-        class GetNotesTask extends AsyncTask<Void, Void, List<Note>>{
+        class GetNotesTask extends AsyncTask<Void, Void, List<Note>> {
             @Override
             protected List<Note> doInBackground(Void... voids) {
                 return NotesDB
@@ -193,27 +193,27 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
 
                 // Log.d("ALL_NOTES",notes.toString());
 
-                if(requestCode==REQUEST_CODE_SHOW_NOTE){
+                if (requestCode == REQUEST_CODE_SHOW_NOTE) {
                     noteList.addAll(notes);
                     notesAdapter.notifyDataSetChanged();
-                }else if(requestCode==REQUEST_CODE_ADD_NOTE){
-                        noteList.add(0,notes.get(0));
-                        notesAdapter.notifyItemInserted(0);
-                        recyclerView.smoothScrollToPosition(0);
-                }else if(requestCode==REQUEST_CODE_UPDATE_NOTE){
-                        noteList.remove(noteClickedPosition);
-                        if(isNoteDeleted){
-                            notesAdapter.notifyItemRemoved(noteClickedPosition);
-                        }
-                        else{
-                            noteList.add(noteClickedPosition,notes.get(noteClickedPosition));
-                            notesAdapter.notifyItemChanged(noteClickedPosition);
-                        }
+                } else if (requestCode == REQUEST_CODE_ADD_NOTE) {
+                    noteList.add(0, notes.get(0));
+                    notesAdapter.notifyItemInserted(0);
+                    recyclerView.smoothScrollToPosition(0);
+                } else if (requestCode == REQUEST_CODE_UPDATE_NOTE) {
+                    noteList.remove(noteClickedPosition);
+                    if (isNoteDeleted) {
+                        notesAdapter.notifyItemRemoved(noteClickedPosition);
+                    } else {
+                        noteList.add(noteClickedPosition, notes.get(noteClickedPosition));
+                        notesAdapter.notifyItemChanged(noteClickedPosition);
+                    }
                 }
 
 
             }
         }
+        //this load all the notes
         new GetNotesTask().execute();
     }
 
@@ -278,6 +278,7 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
                         intent.putExtra("quickActionType","url");
                         intent.putExtra("URL",inputURL.getText().toString().trim());
                         startActivityForResult(intent,REQUEST_CODE_ADD_NOTE);
+
 
                     }
                 }
