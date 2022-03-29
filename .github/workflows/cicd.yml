@@ -18,5 +18,5 @@ jobs:
       - name: Run test
         run: ./gradlew test
 
-      - name: Build Project
+      - name: Build Android project
         run: ./gradlew assemble
